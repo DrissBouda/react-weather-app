@@ -37,7 +37,7 @@ export default function App() {
           q: city,
           lang: "en",
         },
-        url: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${process.env.REACT_APP_API_KEY}`,
+        url: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=9bcec12c46c8ab1e6b9afbb3483a123a`,
       };
       setLoading(true);
       try {
