@@ -2,12 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import WeatherIcon from "./components/WeatherIcon";
 import { MoonLoader } from "react-spinners";
-import { BsSearch } from "react-icons/bs";
-import { Button } from "@mui/material";
-import { Alert } from "@mui/material";
+
+import SouthIcon from "@mui/icons-material/South";
+import NorthIcon from "@mui/icons-material/North";
 import SearchIcon from "@mui/icons-material/Search";
 import WaterIcon from "@mui/icons-material/Water";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
+import PlaceIcon from "@mui/icons-material/Place";
 
 export default function App() {
   const handleCityChange = (event) => {
@@ -35,7 +36,7 @@ export default function App() {
         method: "GET",
         params: {
           q: city,
-          lang: "en",
+          lang: "de",
         },
         url: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=9bcec12c46c8ab1e6b9afbb3483a123a`,
       };
@@ -102,9 +103,7 @@ export default function App() {
       </div>
       {loading && <MoonLoader color="#fff" speedMultiplier={1} />}
       {errorMessage && (
-        <Alert style={{ margin: "auto", fontSize: "20px" }} severity="error">
-          {errorMessage}
-        </Alert>
+        <div style={{ margin: "auto", fontSize: "30px" }}>{errorMessage}</div>
       )}
       {weatherData && (
         <div className="weather-card">
@@ -116,7 +115,9 @@ export default function App() {
               flexDirection: "column",
             }}
           >
-            <span style={{ color: "#fff", fontSize: "30px" }}>{stadt}</span>
+            <span className="city-name">
+              <PlaceIcon /> {stadt}
+            </span>
             <span>
               <img
                 src={`https://www.countryflagicons.com/FLAT/64/${flag}.png`}
@@ -124,18 +125,30 @@ export default function App() {
               />
             </span>
           </div>
+
+          <div className="city-name" style={{ fontSize: 80 }}>
+            {Math.floor(temp)}°
+          </div>
           <div className="weather-details">{description}</div>
-          <div style={{ fontSize: 80 }}>{Math.floor(temp)}°</div>
           <div id="weatherIcon" className="weather-details">
             <WeatherIcon iconCode={weatherIcon} description={description} />
           </div>
           <div className="weather-details">
             <span>
+              <SouthIcon />
+            </span>
+            <span>{Math.floor(tempmin)}°</span>
+            <span>
+              <NorthIcon />
+            </span>
+            <span>{Math.floor(tempmax)}°</span>
+          </div>
+
+          <div className="weather-details">
+            <span>
               <DeviceThermostatIcon />
             </span>
-            <span> {Math.floor(feelslike)} °C</span>
-          </div>
-          <div className="weather-details">
+            <span> {Math.floor(feelslike)}°</span>
             <span id="humidity">
               <WaterIcon />
             </span>

@@ -7,7 +7,7 @@ const WeatherIcon = ({ iconCode, description }) => {
         src={`https://openweathermap.org/img/wn/${iconCode}@4x.png`}
         alt={description}
       /> */}
-      <img width={150} src={`/icons/${iconCode}.png`} alt={description} />
+      <img width={140} src={`/icons/${iconCode}.png`} alt={description} />
     </div>
   );
 };
