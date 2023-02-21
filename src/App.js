@@ -119,10 +119,17 @@ export default function App() {
               <PlaceIcon /> {stadt}
             </span>
             <span>
-              <img
-                src={`https://www.countryflagicons.com/FLAT/64/${flag}.png`}
-                alt={flag}
-              />
+              {flag === "EH" ? (
+                <img
+                  src={`https://www.countryflagicons.com/FLAT/64/MA.png`}
+                  alt={flag}
+                />
+              ) : (
+                <img
+                  src={`https://www.countryflagicons.com/FLAT/64/${flag}.png`}
+                  alt={flag}
+                />
+              )}
             </span>
           </div>
 
