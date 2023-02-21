@@ -1,14 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap");
 body {
   font-family: "Poppins", sans-serif;
-  background: #303030;
+  background: #202020;
   margin: 0;
   padding: 0;
-  text-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px,
-    rgba(0, 0, 0, 0.5) 1px 1px 1px;
-  --darkreader-inline-color: #d0ccc6;
-  --darkreader-inline-bgimage: initial;
-  --darkreader-inline-bgcolor: #25282a;
 }
 .container {
   display: flex;
@@ -31,7 +26,7 @@ body {
 .navBar {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 20px;
   border-bottom: 0.07em solid darkgrey;
   margin-top: 5px;
   justify-content: center;
@@ -43,16 +38,12 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.weather-icon img {
-  position: relative;
-  top: -40px;
-}
+
 .container input {
   display: flex;
-  gap: 6px;
   padding: 10px;
   background: inherit;
-  color: darkgray;
+  color: #fff;
   border: none;
   width: 100%;
   font-size: 20px;
@@ -61,14 +52,14 @@ body {
   outline: none;
 }
 .container input::placeholder {
-  color: #fff;
+  color: #eee;
 }
 .weather-details {
   font-style: 12px;
   display: flex;
   gap: 4px;
   flex-direction: row;
-  color: #e1c700;
+  color: #fff;
   margin: 0 auto;
   padding: 5px;
   text-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px,

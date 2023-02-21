@@ -10,12 +10,12 @@ import WaterIcon from "@mui/icons-material/Water";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 
 export default function App() {
-  const [city, setCity] = useState("");
   const handleCityChange = (event) => {
     setCity(event.target.value);
   };
-
+  const [city, setCity] = useState("");
   const [temp, setTemp] = useState(null);
+  const [time, setTime] = useState(null);
   const [tempmin, setTempmin] = useState(null);
   const [tempmax, setTempmax] = useState(null);
   const [humidity, setHumidity] = useState(null);
@@ -45,7 +45,6 @@ export default function App() {
           .request(options)
           .then(function (response) {
             setErrorMessage(null);
-            console.log(response);
             setTemp(response.data.main.temp);
             setTempmin(response.data.main.temp_min);
             setTempmax(response.data.main.temp_max);
@@ -56,7 +55,6 @@ export default function App() {
             setDescription(response.data.weather[0].description);
             setFlag(response.data.sys.country);
             setWeatherData(response.data);
-            console.log(weatherData);
             setLoading(false);
           })
           .catch(function (error) {
@@ -93,7 +91,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <div class="navBar">
+      <div className="navBar">
         <SearchIcon />
         <input
           value={city}
@@ -102,10 +100,10 @@ export default function App() {
           placeholder="e.g. Berlin ..."
         />
       </div>
-      {loading && <MoonLoader color="#36d7b7" speedMultiplier={1} />}
+      {loading && <MoonLoader color="#fff" speedMultiplier={1} />}
       {errorMessage && (
-        <Alert style={{ margin: "auto", fontSize: "22px" }} severity="error">
-          {errorMessage} !
+        <Alert style={{ margin: "auto", fontSize: "20px" }} severity="error">
+          {errorMessage}
         </Alert>
       )}
       {weatherData && (
@@ -126,6 +124,7 @@ export default function App() {
               />
             </span>
           </div>
+          <div className="weather-details">{description}</div>
           <div style={{ fontSize: 80 }}>{Math.floor(temp)}°</div>
           <div id="weatherIcon" className="weather-details">
             <WeatherIcon iconCode={weatherIcon} description={description} />
